@@ -1,0 +1,106 @@
+import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { ORDER_FORM_ID } from './OrderForm/OrderForm';
+import { fetchData } from '../../actions/fetch';
+
+import Breadcrumbs from '../../components/Breadcrumbs';
+import OrderForm from './OrderForm/OrderForm';
+import OrderSummary from './OrderSummary/OrderSummary';
+import OrderSuccess from './OrderSuccess';
+
+import { FormStageId } from './constants';
+
+import cn from 'classnames';
+import get from 'lodash.get';
+import Api from '../../api';
+import { getCartItemsSelector } from '../../selectors/cart';
+import { resetCart } from '../../actions/cart';
+
+const breadcrumbItems = [
+  {
+    id: FormStageId.SHIPPING,
+    label: 'Shipping',
+  },
+  {
+    id: FormStageId.BILLING,
+    label: 'Billing',
+  },
+  {
+    id: FormStageId.PAYMENT,
+    label: 'Payment',
+  },
+];
+
+function OrderPage() {
+  const dispatch = useDispatch();
+  const cartItems = useSelector(getCartItemsSelector());
+  const pageToPrintRef = useRef(null);
+
+  const [activeId, setActiveId] = useState(FormStageId.SHIPPING);
+  const [isOrderSuccess, setOrderSuccess] = useState(false);
+  const [orderData, setOrderData] = useState(null);
+
+  const onSubmit = (values) => {
+    dispatch(
+      fetchData({
+        id: ORDER_FORM_ID,
+        url: Api.SEND_ORDER_FORM,
+        options: {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        },
+        onSuccess: (data) => {
+          setOrderData(data);
+          setOrderSuccess(true);
+          dispatch(resetCart());
+        },
+      })
+    );
+  };
+
+  return (
+    <div ref={pageToPrintRef} className="order-page">
+      <div
+        className={cn({
+          'order-page__form': !isOrderSuccess,
+          'order-page__success': isOrderSuccess,
+        })}
+      >
+        {!isOrderSuccess ? (
+          [
+            <Breadcrumbs
+              key="breadcrumbs"
+              items={breadcrumbItems}
+              activeId={activeId}
+              onClick={setActiveId}
+            />,
+            <OrderForm
+              key="orderForm"
+              onSubmit={onSubmit}
+              activeId={activeId}
+              handleChangeStage={setActiveId}
+            />,
+          ]
+        ) : (
+          <OrderSuccess
+            pageToPrintRef={get(pageToPrintRef, 'current', null)}
+            {...orderData}
+          />
+        )}
+      </div>
+      <div
+        className={cn('order-page__summary', {
+          'order-page__summary--translucent': isOrderSuccess,
+        })}
+      >
+        <OrderSummary cartItems={cartItems} />
+      </div>
+    </div>
+  );
+}
+
+export default OrderPage;

@@ -1,0 +1,45 @@
+.header {
+  @include container();
+
+  @include flex($align: baseline, $justify: space-between);
+
+  padding: 16px 10px;
+
+  &__container {
+    position: relative;
+    background-color: $white;
+
+    &::before {
+      @include pseudo-element(
+        $left: 0,
+        $bottom: 0,
+        $background: linear-gradient(270deg, #7E00E8 0%, #FF1876 54.17%, #BB0CB2 100%)
+      );
+
+      opacity: .3;
+    }
+  }
+
+  &__brand {
+    position: relative;
+    padding-left: 35px;
+
+    color: $purple;
+    text-decoration: none;
+    letter-spacing: 0.4px;
+
+    &::before {
+      @include pseudo-element(
+        $left: 0,
+        $top: calc(50% - 14px),
+        $background: url('/public/img/logo.svg ') center no-repeat,
+        $width: 26px,
+        $height: 26px
+      );
+    }
+
+    @media (max-width: $mobile-screen) {
+      font-size: 14px;
+    }
+  }
+}

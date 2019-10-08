@@ -1,0 +1,22 @@
+.input-credit-card {
+  position: relative;
+
+  width: 100%;
+
+  &::after {
+    @include pseudo-element($right: 12px);
+  }
+
+  &--visa::after {
+    top: calc(50% - 7.5px);
+
+    width: 49px;
+    height: 15px;
+
+    background: url("/public/img/visa.svg") center / contain no-repeat;
+  }
+
+  &__input {
+    @include form-control();
+  }
+}

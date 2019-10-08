@@ -1,0 +1,51 @@
+.order-summary {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  padding: 24px 10px 15px 6px;
+
+  box-sizing: border-box;
+
+  &__title {
+    @include flex($justify: space-between);
+
+    padding-left: 7px;
+
+    margin: 0;
+
+    @include font($spacing: -0.25px, $color: $purple);
+  }
+
+  &__edit-link {
+    @include font($size: 12px, $height: 14px, $color: $gray);
+    text-decoration: underline dashed;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__total {
+    @include flex($justify: space-between);
+
+    margin-top: 15px;
+    margin-bottom: 40px;
+    padding-left: 5px;
+
+    &-name {
+      @include font($size: 12px, $height: 13px, $color: #431C5D, $weight: bold);
+    }
+
+    &-value {
+      @include font($size: 12px, $height: 13px, $color: #431C5D, $weight: bold);
+    }
+  }
+
+  &__terms {
+    margin-top: auto;
+  }
+}

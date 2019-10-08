@@ -1,0 +1,48 @@
+.breadcrumbs {
+  &__list {
+    display: flex;
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+
+    padding: 0 25px 0 15px;
+
+    @include font($size: 12px, $height: 20px, $color: $gray);
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &::after {
+      @include pseudo-element(
+        $right: 0,
+        $top: 0,
+        $width: 10px,
+        $height: 20px,
+        $background: url('/public/img/arrow.svg') center no-repeat
+      );
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+
+    &--active {
+      color: $purple;
+    }
+
+    &--link {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    & a {
+      text-decoration: none;
+    }
+  }
+}
