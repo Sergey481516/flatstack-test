@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ORDER_FORM_ID } from './OrderForm/OrderForm';
@@ -16,6 +16,7 @@ import get from 'lodash.get';
 import Api from '../../api';
 import { getCartItemsSelector } from '../../selectors/cart';
 import { resetCart } from '../../actions/cart';
+import isEmpty from 'lodash.isempty';
 
 const breadcrumbItems = [
   {
@@ -40,6 +41,7 @@ function OrderPage() {
   const [activeId, setActiveId] = useState(FormStageId.SHIPPING);
   const [isOrderSuccess, setOrderSuccess] = useState(false);
   const [orderData, setOrderData] = useState(null);
+  const [countries, setCountries] = useState([]);
 
   const onSubmit = (values) => {
     dispatch(
@@ -58,9 +60,45 @@ function OrderPage() {
           setOrderSuccess(true);
           dispatch(resetCart());
         },
+        onError: (e) => {
+          // TODO типа есть endpoint
+          const data = {
+            estimatedDate: 'Friday 1st April 2016',
+            orderNumber: 188787788,
+          };
+
+          setOrderData(data);
+          setOrderSuccess(true);
+          dispatch(resetCart());
+        },
       })
     );
   };
+
+  const handleDetectCountry = (value, onSuccess, onError) => {
+    if (!isEmpty(value)) {
+      dispatch(
+        fetchData({
+          url: Api.GET_ADDRESS_BY_GEOCODE,
+          mappingOptions: {
+            coords: value,
+          },
+          onSuccess,
+          onError,
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    dispatch(
+      fetchData({
+        id: 'countries',
+        url: Api.GET_COUNTRIES,
+        onSuccess: setCountries,
+      })
+    );
+  }, []);
 
   return (
     <div ref={pageToPrintRef} className="order-page">
@@ -83,6 +121,8 @@ function OrderPage() {
               onSubmit={onSubmit}
               activeId={activeId}
               handleChangeStage={setActiveId}
+              handleDetectCountry={handleDetectCountry}
+              countries={countries}
             />,
           ]
         ) : (

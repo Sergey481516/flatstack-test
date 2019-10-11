@@ -10,21 +10,17 @@ import {
   setFetchError,
 } from '../actions/fetch';
 
-function compileUrl(url, mappingOptions = {}) {
+export function compileUrl(url, mappingOptions = {}) {
   return pathToRegexp.compile(url)(mappingOptions);
 }
 
 export function* fetchData({ payload }) {
-  const { id } = payload;
+  const { id = 'lastRequest' } = payload;
 
   try {
     const { url, options, mappingOptions, onSuccess } = payload;
     yield setLoading(id, true);
-    const datasource = yield call(
-      Api.fetch,
-      compileUrl(url, mappingOptions),
-      options
-    );
+    const datasource = yield call(fetchSaga, url, options, mappingOptions);
     yield put(setDatasource({ id, datasource }));
     if (typeof onSuccess === 'function') onSuccess(datasource);
   } catch (e) {
@@ -35,6 +31,21 @@ export function* fetchData({ payload }) {
     console.error(e);
   } finally {
     yield setLoading(id, false);
+  }
+}
+
+export function* fetchSaga(url, options, mappingOptions = {}) {
+  try {
+    const datasource = yield call(
+      Api.fetch,
+      compileUrl(url, mappingOptions),
+      options
+    );
+
+    return datasource;
+  } catch (e) {
+    console.error(e);
+    throw e;
   }
 }
 

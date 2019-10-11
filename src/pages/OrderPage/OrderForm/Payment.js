@@ -4,7 +4,7 @@ import Title from '../../../components/Title';
 import Field from '../../../components/Field';
 import Button from '../../../components/Button';
 
-const cardMaskPart = [/[1-9]/, /[1-9]/, /[1-9]/, /[1-9]/];
+const cardMaskPart = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
 const cardMask = [
   ...cardMaskPart,
   ' ',
@@ -16,7 +16,7 @@ const cardMask = [
   ' ',
   ...cardMaskPart,
 ];
-const expireDateMask = [/[0-1]/, /[0-2]/, '/', /[0-9]/, /[0-9]/];
+const expireDateMask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/];
 const securityCodeMask = cardMaskPart.slice();
 
 function Payment() {
@@ -64,7 +64,7 @@ function Payment() {
           errorPosition="right"
         />
       </div>
-      <Button>Pay Securely</Button>
+      <Button buttonType="submit">Pay Securely</Button>
     </>
   );
 }

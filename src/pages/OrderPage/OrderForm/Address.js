@@ -2,17 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../../../components/Field';
+import Button from '../../../components/Button';
 
-const items = [
-  {
-    label: 'Russia',
-  },
-  {
-    label: 'USA',
-  },
-];
-
-function Address({ label, prefix }) {
+function Address({ label, prefix, onCountryDetect, countries }) {
   return (
     <>
       <div className="order-form__fieldset">
@@ -29,18 +21,26 @@ function Address({ label, prefix }) {
         />
       </div>
       <div className="order-form__fieldset">
-        <Field
-          src="Input"
-          placeholder="City"
-          name={`${prefix}.city`}
-          errorPosition="left"
-        />
+        <div className="order-form__field-with-action">
+          <Field
+            src="Input"
+            placeholder="City"
+            name={`${prefix}.city`}
+            errorPosition="left"
+          />
+          <Button
+            onClick={() => onCountryDetect(prefix)}
+            className="order-form__detect-country"
+            type="transparent"
+          />
+        </div>
       </div>
       <div className="order-form__fieldset order-form__fieldset-country-zip">
         <Field
           className="order-form__country-field"
           src="AutoComplete"
-          items={items}
+          items={countries}
+          labelFieldId="name"
           placeholder="Country"
           name={`${prefix}.country`}
           errorPosition="left"
@@ -60,6 +60,7 @@ function Address({ label, prefix }) {
 Address.propTypes = {
   label: PropTypes.string,
   prefix: PropTypes.string,
+  countries: PropTypes.array,
 };
 
 export default Address;

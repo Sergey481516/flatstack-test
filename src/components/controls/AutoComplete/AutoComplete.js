@@ -5,9 +5,6 @@ import ReactAutoComplete from 'react-autocomplete';
 
 import cn from 'classnames';
 
-const shouldItemRender = (item, value) =>
-  !!~item.label.toLowerCase().indexOf(value.toLowerCase());
-
 function AutoComplete({
   className,
   labelFieldId,
@@ -32,7 +29,9 @@ function AutoComplete({
       <ReactAutoComplete
         inputProps={getInputProps()}
         getItemValue={(item) => item[labelFieldId]}
-        shouldItemRender={shouldItemRender}
+        shouldItemRender={(item, value) =>
+          !!~item[labelFieldId].toLowerCase().indexOf(value.toLowerCase())
+        }
         items={items}
         onMenuVisibilityChange={setOpen}
         renderMenu={(items) => (
@@ -44,7 +43,7 @@ function AutoComplete({
               'autocomplete__item--active': isHighlighted,
             })}
           >
-            {item.label}
+            {item[labelFieldId]}
           </div>
         )}
         {...rest}

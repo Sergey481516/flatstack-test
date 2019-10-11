@@ -10,7 +10,13 @@ import Title from '../../../components/Title';
 
 import { FormStageId } from '../constants';
 
-function ShippingInfo({ handleChangeStage, validate, values }) {
+function ShippingInfo({
+  handleChangeStage,
+  validate,
+  values,
+  onCountryDetect,
+  countries,
+}) {
   const onChangeStage = () => {
     const errors = validate(values);
 
@@ -41,8 +47,15 @@ function ShippingInfo({ handleChangeStage, validate, values }) {
           errorPosition="left"
         />
       </div>
-      <Address label="Address" prefix="shipping" />
-      <Button onClick={onChangeStage}>Continue</Button>
+      <Address
+        label="Address"
+        prefix="shipping"
+        onCountryDetect={onCountryDetect}
+        countries={countries}
+      />
+      <Button buttonType="submit" onClick={onChangeStage}>
+        Continue
+      </Button>
     </>
   );
 }
@@ -51,6 +64,7 @@ ShippingInfo.propTypes = {
   handleChangeStage: PropTypes.func,
   validate: PropTypes.func,
   values: PropTypes.object,
+  countries: PropTypes.array,
 };
 
 export default ShippingInfo;

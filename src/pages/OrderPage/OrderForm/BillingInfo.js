@@ -16,7 +16,14 @@ const mapValuesByKeys = (keys, values) =>
     value: get(values, ['shipping', key]),
   }));
 
-function BillingInfo({ handleChangeStage, onValueChange, validate, values }) {
+function BillingInfo({
+  handleChangeStage,
+  onValueChange,
+  validate,
+  values,
+  onCountryDetect,
+  countries,
+}) {
   const onChangeStage = () => {
     const errors = validate(values);
 
@@ -51,8 +58,15 @@ function BillingInfo({ handleChangeStage, onValueChange, validate, values }) {
         />
         <Field src="Input" placeholder="Email Address" name="billing.email" />
       </div>
-      <Address label="Billing Information" prefix="billing" />
-      <Button onClick={onChangeStage}>Continue</Button>
+      <Address
+        label="Billing Information"
+        prefix="billing"
+        onCountryDetect={onCountryDetect}
+        countries={countries}
+      />
+      <Button buttonType="submit" onClick={onChangeStage}>
+        Continue
+      </Button>
     </>
   );
 }
@@ -62,6 +76,7 @@ BillingInfo.propTypes = {
   onValueChange: PropTypes.func,
   validate: PropTypes.func,
   values: PropTypes.object,
+  countries: PropTypes.array,
 };
 
 export default BillingInfo;

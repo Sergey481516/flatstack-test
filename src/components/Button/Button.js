@@ -6,13 +6,15 @@ import cn from 'classnames';
 const ButtonType = {
   PRIMARY: 'primary',
   LINK: 'link',
+  TRANSPARENT: 'transparent',
 };
 
-function Button({ children, onClick, type }) {
+function Button({ className, children, onClick, type, buttonType }) {
   return (
     <button
+      type={buttonType}
       onClick={onClick}
-      className={cn('button', {
+      className={cn('button', className, {
         'button--primary': type === ButtonType.PRIMARY,
         'button--link': type === ButtonType.LINK,
       })}
@@ -23,12 +25,19 @@ function Button({ children, onClick, type }) {
 }
 
 Button.propTypes = {
+  buttonType: PropTypes.string,
+  className: PropTypes.string,
   label: PropTypes.string,
   onClick: PropTypes.func,
-  type: PropTypes.oneOf([ButtonType.PRIMARY, ButtonType.LINK]),
+  type: PropTypes.oneOf([
+    ButtonType.PRIMARY,
+    ButtonType.LINK,
+    ButtonType.TRANSPARENT,
+  ]),
 };
 
 Button.defaultProps = {
+  buttonType: 'button',
   onClick: () => {},
   type: ButtonType.PRIMARY,
 };

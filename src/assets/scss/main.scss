@@ -1,14 +1,11 @@
-@import "~normalize-scss/sass/normalize/import-now";
+@import "../../../node_modules/normalize-scss/sass/normalize/import-now";
 @import "scaffolding";
 @import "variables";
 @import "mixins";
 
-@import "blocks/header";
-@import "blocks/cart-box";
 @import "components/breadcrumbs";
 @import "components/form-field";
 @import "components/button";
-@import "blocks/term-and-conditions";
 @import "components/title";
 @import "components/autocomplete";
 @import "components/input";
@@ -23,3 +20,6 @@
 @import "blocks/order-summary-item";
 @import "blocks/order-summary-costs";
 @import "blocks/order-success";
+@import "blocks/term-and-conditions";
+@import "blocks/header";
+@import "blocks/cart-box";

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getUserPosition } from '../../actions/user';
 
-function Navigator() {
+function Navigator({ children }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserPosition());
-  }, []);
-  return null;
+  }, [dispatch]);
+  return children;
 }
 
 export default Navigator;

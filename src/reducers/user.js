@@ -12,6 +12,7 @@ export default (state = defaultState, action) => {
           coords: action.payload.coords,
           country: action.payload.country,
           city: action.payload.city,
+          postalCode: action.payload.postalCode,
         },
       });
     default:
