@@ -1,4 +1,0 @@
-export const FETCH = 'FETCH';
-export const SET_DATASOURCE = 'SET_DATASOURCE';
-export const SET_FETCH_LOADING = 'SET_FETCH_LOADING';
-export const SET_FETCH_ERROR = 'SET_FETCH_ERROR';

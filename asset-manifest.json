@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/flatstack-test/static/css/main.778b5f83.chunk.css",
+    "main.js": "/flatstack-test/static/js/main.743d9ad5.chunk.js",
+    "main.js.map": "/flatstack-test/static/js/main.743d9ad5.chunk.js.map",
+    "runtime-main.js": "/flatstack-test/static/js/runtime-main.a4b8129e.js",
+    "runtime-main.js.map": "/flatstack-test/static/js/runtime-main.a4b8129e.js.map",
+    "static/js/2.ac677dde.chunk.js": "/flatstack-test/static/js/2.ac677dde.chunk.js",
+    "static/js/2.ac677dde.chunk.js.map": "/flatstack-test/static/js/2.ac677dde.chunk.js.map",
+    "index.html": "/flatstack-test/index.html",
+    "precache-manifest.fb15027d1333cdef75034b0bbbe5ef2c.js": "/flatstack-test/precache-manifest.fb15027d1333cdef75034b0bbbe5ef2c.js",
+    "public/img/arrow.svg": "/flatstack-test/public/img/arrow.svg",
+    "public/img/autocomplete-arrow.svg": "/flatstack-test/public/img/autocomplete-arrow.svg",
+    "public/img/bag.png": "/flatstack-test/public/img/bag.png",
+    "public/img/boot.png": "/flatstack-test/public/img/boot.png",
+    "public/img/cart.svg": "/flatstack-test/public/img/cart.svg",
+    "public/img/detect-geo.svg": "/flatstack-test/public/img/detect-geo.svg",
+    "public/img/lock.png": "/flatstack-test/public/img/lock.png",
+    "public/img/logo.svg": "/flatstack-test/public/img/logo.svg",
+    "public/img/search.svg": "/flatstack-test/public/img/search.svg",
+    "public/img/visa.svg": "/flatstack-test/public/img/visa.svg",
+    "public/img/zip-bag.png": "/flatstack-test/public/img/zip-bag.png",
+    "service-worker.js": "/flatstack-test/service-worker.js",
+    "static/css/main.778b5f83.chunk.css.map": "/flatstack-test/static/css/main.778b5f83.chunk.css.map",
+    "static/media/cart.svg": "/flatstack-test/static/media/cart.e6dce4ce.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4b8129e.js",
+    "static/js/2.ac677dde.chunk.js",
+    "static/css/main.778b5f83.chunk.css",
+    "static/js/main.743d9ad5.chunk.js"
+  ]
+}
