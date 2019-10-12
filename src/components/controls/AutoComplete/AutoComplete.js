@@ -3,15 +3,20 @@ import PropTypes from 'prop-types';
 
 import ReactAutoComplete from 'react-autocomplete';
 
+import useFetch from '../useFetch';
 import cn from 'classnames';
 
 function AutoComplete({
   className,
   labelFieldId,
-  items,
   placeholder,
+  url,
+  mappingOptions,
+  mapper,
+  items,
   ...rest
 }) {
+  const { data } = useFetch(url, mappingOptions, mapper);
   const [open, setOpen] = useState(false);
 
   const getInputProps = () => ({
@@ -32,7 +37,7 @@ function AutoComplete({
         shouldItemRender={(item, value) =>
           !!~item[labelFieldId].toLowerCase().indexOf(value.toLowerCase())
         }
-        items={items}
+        items={data || items}
         onMenuVisibilityChange={setOpen}
         renderMenu={(items) => (
           <div className="autocomplete__menu" children={items} />

@@ -22,7 +22,6 @@ function BillingInfo({
   validate,
   values,
   onCountryDetect,
-  countries,
 }) {
   const onChangeStage = () => {
     const errors = validate(values);
@@ -62,7 +61,6 @@ function BillingInfo({
         label="Billing Information"
         prefix="billing"
         onCountryDetect={onCountryDetect}
-        countries={countries}
       />
       <Button buttonType="submit" onClick={onChangeStage}>
         Continue
@@ -76,7 +74,6 @@ BillingInfo.propTypes = {
   onValueChange: PropTypes.func,
   validate: PropTypes.func,
   values: PropTypes.object,
-  countries: PropTypes.array,
 };
 
 export default BillingInfo;

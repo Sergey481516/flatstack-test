@@ -13,17 +13,6 @@ import Navigator from './components/Navigator';
 
 const store = configureStore();
 
-/**
- * валидации? тесты? stylelint + refactoring?
- * проверить семантику
- * сетки?
- * проверка архитектуры
- * СI/CD
- * переложить обязаность полечения items на autocomplete
- * e2e?
- * билд спрайтов?
- */
-
 function App() {
   return (
     <Provider store={store}>

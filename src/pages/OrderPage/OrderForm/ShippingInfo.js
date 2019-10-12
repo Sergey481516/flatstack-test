@@ -15,7 +15,6 @@ function ShippingInfo({
   validate,
   values,
   onCountryDetect,
-  countries,
 }) {
   const onChangeStage = () => {
     const errors = validate(values);
@@ -51,7 +50,6 @@ function ShippingInfo({
         label="Address"
         prefix="shipping"
         onCountryDetect={onCountryDetect}
-        countries={countries}
       />
       <Button buttonType="submit" onClick={onChangeStage}>
         Continue
@@ -63,7 +61,6 @@ function ShippingInfo({
 ShippingInfo.propTypes = {
   handleChangeStage: PropTypes.func,
   validate: PropTypes.func,
-  countries: PropTypes.array,
 };
 
 export default ShippingInfo;

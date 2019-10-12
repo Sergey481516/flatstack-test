@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ORDER_FORM_ID } from './OrderForm/OrderForm';
@@ -41,7 +41,6 @@ function OrderPage() {
   const [activeId, setActiveId] = useState(FormStageId.SHIPPING);
   const [isOrderSuccess, setOrderSuccess] = useState(false);
   const [orderData, setOrderData] = useState(null);
-  const [countries, setCountries] = useState([]);
 
   const onSubmit = (values) => {
     dispatch(
@@ -90,20 +89,6 @@ function OrderPage() {
     }
   };
 
-  const getCountries = useCallback(() => {
-    dispatch(
-      fetchData({
-        id: 'countries',
-        url: Api.GET_COUNTRIES,
-        onSuccess: setCountries,
-      })
-    );
-  }, [dispatch]);
-
-  useEffect(() => {
-    getCountries();
-  }, [getCountries]);
-
   return (
     <div ref={pageToPrintRef} className="order-page">
       <div
@@ -126,7 +111,6 @@ function OrderPage() {
               activeId={activeId}
               handleChangeStage={setActiveId}
               handleDetectCountry={handleDetectCountry}
-              countries={countries}
             />,
           ]
         ) : (

@@ -32,7 +32,6 @@ function OrderForm({
   form,
   change,
   handleDetectCountry,
-  countries,
 }) {
   const Component = FormPage[activeId];
   const values = useSelector(getFormValues(form)) || [];
@@ -82,7 +81,6 @@ function OrderForm({
         validate={validate}
         values={values}
         onCountryDetect={onCountryDetect}
-        countries={countries}
       />
     </form>
   );
@@ -95,7 +93,6 @@ OrderForm.propTypes = {
   validate: PropTypes.func,
   form: PropTypes.string,
   change: PropTypes.func,
-  countries: PropTypes.array,
 };
 
 export default reduxForm({

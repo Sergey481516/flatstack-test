@@ -15,18 +15,19 @@ export function compileUrl(url, mappingOptions = {}) {
 }
 
 export function* fetchData({ payload }) {
-  const { id = 'lastRequest' } = payload;
+  const { id } = payload;
 
   try {
     const { url, options, mappingOptions, onSuccess } = payload;
     yield setLoading(id, true);
     const datasource = yield call(fetchSaga, url, options, mappingOptions);
-    yield put(setDatasource({ id, datasource }));
+
+    if (id) yield put(setDatasource({ id, datasource }));
     if (typeof onSuccess === 'function') onSuccess(datasource);
   } catch (e) {
     const { onError } = payload;
 
-    yield put(setFetchError(id, e));
+    if (id) yield put(setFetchError(id, e));
     if (typeof onError === 'function') onError(e);
     console.error(e);
   } finally {
@@ -50,7 +51,9 @@ export function* fetchSaga(url, options, mappingOptions = {}) {
 }
 
 export function* setLoading(id, loading) {
-  yield put(setFetchLoading(id, loading));
+  if (id) {
+    yield put(setFetchLoading(id, loading));
+  }
 }
 
 export default [takeEvery(FETCH, fetchData)];

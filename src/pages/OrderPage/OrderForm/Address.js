@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import Field from '../../../components/Field';
 import Button from '../../../components/Button';
+import Api from '../../../api';
 
-function Address({ label, prefix, onCountryDetect, countries }) {
+function Address({ label, prefix, onCountryDetect }) {
   return (
     <>
       <div className="order-form__fieldset">
@@ -39,7 +40,7 @@ function Address({ label, prefix, onCountryDetect, countries }) {
         <Field
           className="order-form__country-field"
           src="AutoComplete"
-          items={countries}
+          url={Api.GET_COUNTRIES}
           labelFieldId="name"
           placeholder="Country"
           name={`${prefix}.country`}
@@ -60,7 +61,6 @@ function Address({ label, prefix, onCountryDetect, countries }) {
 Address.propTypes = {
   label: PropTypes.string,
   prefix: PropTypes.string,
-  countries: PropTypes.array,
 };
 
 export default Address;
