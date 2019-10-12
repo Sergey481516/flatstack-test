@@ -1,0 +1,73 @@
+.autocomplete {
+  position: relative;
+
+  width: 100%;
+
+  & > div {
+    width: 100%;
+  }
+
+  &__input {
+    @include form-control();
+  }
+
+  &::after {
+    @include pseudo-element(
+      $right: 13px,
+      $top: calc(50% - 4px),
+      $width: 14px,
+      $height: 8px,
+      $background: url('/static/img/autocomplete-arrow.svg') center no-repeat
+    );
+  }
+
+  &--active::after {
+    width: 16px;
+    height: 16px;
+    left: 15px;
+    right: auto;
+    top: calc(50% - 8px);
+    background: url('/static/img/search.svg') center no-repeat
+  }
+
+  &--active input {
+    padding-left: 35px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0px -3px 7px rgba(0, 0, 0, 0.05);
+  }
+
+  &__menu {
+    position: absolute;
+    bottom: calc(100% - 1px);
+
+    max-width: 100%;
+    max-height: 375px;
+    width: 100%;
+
+    border: 1px solid #DEDCDC;
+    box-sizing: border-box;
+    box-shadow: 0px -3px 7px rgba(0, 0, 0, 0.05);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: $white;
+
+    overflow: auto;
+    z-index: 2;
+  }
+
+  &__item {
+    padding: 5px 14px;
+
+    @include font();
+    overflow-wrap: break-word;
+
+    &:first-child {
+      padding-top: 12px;
+    }
+
+    &--active {
+      background-color: #E6E9F0;
+    }
+  }
+}

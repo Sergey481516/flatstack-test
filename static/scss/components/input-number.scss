@@ -1,0 +1,5 @@
+.input-number {
+  & input {
+    @include form-control();
+  }
+}

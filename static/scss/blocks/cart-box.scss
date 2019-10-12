@@ -1,0 +1,33 @@
+.cart-box {
+  @include flex();
+
+  margin-right: 5px;
+
+  text-decoration: none;
+
+  &__cart {
+    position: relative;
+  }
+
+  &__goods {
+    position: absolute;
+    right: -6px;
+    top: -6px;
+
+    @include flex();
+
+    width: 14px;
+    height: 14px;
+
+    @include font($size: 9px, $height: 11px, $color: $white);
+
+    background: #FF1876;
+    border-radius: 50%;
+  }
+
+  &__text {
+    margin-right: 5px;
+
+    @include font($size: 15px, $height: 15px, $color: #C90EA5);
+  }
+}
