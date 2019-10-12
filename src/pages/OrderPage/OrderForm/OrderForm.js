@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { useSelector } from 'react-redux';
@@ -35,11 +35,13 @@ function OrderForm({
   countries,
 }) {
   const Component = FormPage[activeId];
-  const values = useSelector(getFormValues(form));
+  const values = useSelector(getFormValues(form)) || [];
   const position = useSelector(getUserPositionSelector());
 
-  const onValueChange = (values) =>
-    values.map(({ key, value }) => change(key, value));
+  const onValueChange = useCallback(
+    (values) => values.map(({ key, value }) => change(key, value)),
+    [change]
+  );
 
   const onCountryDetect = (prefix) => {
     handleDetectCountry(get(values, `${prefix}.city`), (data) => {
@@ -70,7 +72,7 @@ function OrderForm({
         },
       ]);
     }
-  }, [position]);
+  }, [position, onValueChange]);
 
   return (
     <form className="order-form" onSubmit={handleSubmit}>

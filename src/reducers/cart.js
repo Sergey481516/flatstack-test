@@ -4,7 +4,7 @@ const defaultState = {
   items: [
     {
       id: 1,
-      img: '/public/img/boot.png',
+      img: '/static/img/boot.png',
       link: '#',
       name: 'The Chelsea Boot',
       color: 'Black',
@@ -13,7 +13,7 @@ const defaultState = {
     },
     {
       id: 2,
-      img: '/public/img/bag.png',
+      img: '/static/img/bag.png',
       link: '#',
       name: 'The Twill Snap Backpack',
       color: 'Reverse Denim + Drown leather',
@@ -22,7 +22,7 @@ const defaultState = {
     },
     {
       id: 3,
-      img: '/public/img/zip-bag.png',
+      img: '/static/img/zip-bag.png',
       link: '#',
       name: 'The Twill Zip Tote',
       color: 'Reverse Denim + Drown leather',

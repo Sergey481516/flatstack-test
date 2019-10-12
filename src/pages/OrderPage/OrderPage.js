@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ORDER_FORM_ID } from './OrderForm/OrderForm';
@@ -90,7 +90,7 @@ function OrderPage() {
     }
   };
 
-  useEffect(() => {
+  const getCountries = useCallback(() => {
     dispatch(
       fetchData({
         id: 'countries',
@@ -98,7 +98,11 @@ function OrderPage() {
         onSuccess: setCountries,
       })
     );
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    getCountries();
+  }, [getCountries]);
 
   return (
     <div ref={pageToPrintRef} className="order-page">

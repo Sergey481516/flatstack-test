@@ -38,18 +38,10 @@
 
   &__country-field {
     width: 180px;
-
-    @media (max-width: $mobile-screen) {
-      width: 45%;
-    }
   }
 
   &__zip-field  {
     width: 120px;
-
-    @media (max-width: $mobile-screen) {
-      width: 45%;
-    }
   }
 
   &__expire-date-field {
@@ -84,7 +76,7 @@
         $top: -2px,
         $width: 19px,
         $height: 26px,
-        $background: url('/public/img/lock.png') center no-repeat
+        $background: url('/static/img/lock.png') center no-repeat
       );
     }
   }
@@ -102,5 +94,26 @@
     height: 20px;
 
     background: url('/static/img/detect-geo.svg') center no-repeat;
+  }
+}
+
+@media (max-width: $mobile-screen) {
+  .order-form {
+    &__title {
+      font-size: 20px;
+    }
+
+    &__security-help {
+      white-space: normal;
+
+      &::before {
+        top: 0;
+      }
+    }
+
+    &__country-field,
+    &__zip-field {
+      width: 45%;
+    }
   }
 }

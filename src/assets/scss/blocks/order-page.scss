@@ -10,15 +10,6 @@
   border-radius: 5px;
   box-shadow: 0 2px 18px rgba(0, 0, 0, 0.07);
 
-  @media (max-width: $mobile-screen) {
-    margin-top: 0;
-
-    flex-direction: column;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
   &__form,
   &__success {
     width: 400px;
@@ -26,14 +17,6 @@
     padding: 20px 40px 45px 40px;
 
     box-sizing: border-box;
-
-    @media (max-width: $mobile-screen) {
-      width: 100%;
-
-      padding: 10px;
-
-      border-radius: 0;
-    }
   }
 
   &__summary {
@@ -47,22 +30,58 @@
     &--translucent {
       opacity: 0.5;
     }
-
-    @media (max-width: $mobile-screen) {
-      width: 100%;
-
-      border-radius: 0;
-    }
   }
 
   &__success {
     padding: 35px 15px 0 40px;
+  }
+}
 
-    @media (max-width: $mobile-screen) {
+@media (max-width: $mobile-screen) {
+  .order-page {
+    margin-top: 0;
+
+    flex-direction: column;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &__form,
+    &__success {
+      width: 100%;
+
+      padding: 10px;
+
+      border-radius: 0;
+    }
+
+    &__summary {
+      width: 100%;
+
+      border-radius: 0;
+    }
+
+    &__success {
       width: 320px;
 
       margin: 0 auto;
       padding: 10px 10px 20px;
+    }
+  }
+}
+
+@media print {
+  .order-page {
+    flex-direction: row;
+
+    margin-top: 30px;
+
+    &__success {
+      width: 400px;
+    }
+
+    &__summary {
+      width: 300px;
     }
   }
 }

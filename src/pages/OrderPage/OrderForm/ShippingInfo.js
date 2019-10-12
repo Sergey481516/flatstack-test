@@ -63,7 +63,6 @@ function ShippingInfo({
 ShippingInfo.propTypes = {
   handleChangeStage: PropTypes.func,
   validate: PropTypes.func,
-  values: PropTypes.object,
   countries: PropTypes.array,
 };
 

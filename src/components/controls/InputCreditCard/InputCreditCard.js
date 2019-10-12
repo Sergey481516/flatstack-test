@@ -5,15 +5,6 @@ import Cleave from 'cleave.js/react';
 
 import cn from 'classnames';
 
-const CardType = {
-  AMEX: 'amex',
-  VISA: 'visa',
-  DINERS: 'diners',
-  MASTERCARD: 'mastercard',
-  JCB: 'jcb',
-  DISCOVER: 'discover',
-};
-
 const UNKNOWN_CARD = 'unknown';
 
 function InputCreditCard({ className, ...rest }) {

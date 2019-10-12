@@ -54,7 +54,7 @@ Field.propTypes = {
   help: PropTypes.string,
   className: PropTypes.string,
   meta: PropTypes.object,
-  errorPosition: PropTypes.oneOfType(['top', 'right', 'bottom', 'left']),
+  errorPosition: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   input: PropTypes.object,
 };
 

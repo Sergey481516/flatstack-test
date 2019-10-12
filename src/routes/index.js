@@ -4,7 +4,7 @@ import OrderPage from '../pages/OrderPage';
 
 const routes = [
   {
-    path: '/order',
+    path: '/',
     render: (props) => <OrderPage {...props} />,
   },
 ];

@@ -17,7 +17,7 @@
       $top: calc(50% - 4px),
       $width: 14px,
       $height: 8px,
-      $background: url('/public/img/autocomplete-arrow.svg') center no-repeat
+      $background: url('/static/img/autocomplete-arrow.svg') center no-repeat
     );
   }
 
@@ -27,7 +27,7 @@
     left: 15px;
     right: auto;
     top: calc(50% - 8px);
-    background: url('/public/img/search.svg') center no-repeat
+    background: url('/static/img/search.svg') center no-repeat
   }
 
   &--active input {
