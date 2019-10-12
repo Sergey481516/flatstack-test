@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/flatstack-test/static/css/main.c026b712.chunk.css",
-    "main.js": "/flatstack-test/static/js/main.80337cd6.chunk.js",
-    "main.js.map": "/flatstack-test/static/js/main.80337cd6.chunk.js.map",
+    "main.js": "/flatstack-test/static/js/main.50d81a03.chunk.js",
+    "main.js.map": "/flatstack-test/static/js/main.50d81a03.chunk.js.map",
     "runtime-main.js": "/flatstack-test/static/js/runtime-main.a4b8129e.js",
     "runtime-main.js.map": "/flatstack-test/static/js/runtime-main.a4b8129e.js.map",
     "static/js/2.d692e85f.chunk.js": "/flatstack-test/static/js/2.d692e85f.chunk.js",
     "static/js/2.d692e85f.chunk.js.map": "/flatstack-test/static/js/2.d692e85f.chunk.js.map",
     "index.html": "/flatstack-test/index.html",
-    "precache-manifest.ffaa9684182ad0f9a3be959d7dbcea65.js": "/flatstack-test/precache-manifest.ffaa9684182ad0f9a3be959d7dbcea65.js",
+    "precache-manifest.81505dee9beb88c3e64de5a7b5c5b3e4.js": "/flatstack-test/precache-manifest.81505dee9beb88c3e64de5a7b5c5b3e4.js",
     "service-worker.js": "/flatstack-test/service-worker.js",
     "static/css/main.c026b712.chunk.css.map": "/flatstack-test/static/css/main.c026b712.chunk.css.map",
     "static/img/arrow.svg": "/flatstack-test/static/img/arrow.svg",
@@ -51,6 +51,6 @@
     "static/js/runtime-main.a4b8129e.js",
     "static/js/2.d692e85f.chunk.js",
     "static/css/main.c026b712.chunk.css",
-    "static/js/main.80337cd6.chunk.js"
+    "static/js/main.50d81a03.chunk.js"
   ]
 }
