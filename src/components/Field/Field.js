@@ -1,31 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Control from './Control';
 import FieldError from './FieldError';
-import controls from '../controls';
 
 import cn from 'classnames';
 
 function Field(props) {
   const {
     id,
-    src,
     label,
     help,
     className,
-    meta,
-    name,
+    meta = {},
     errorPosition,
     input,
     ...rest
   } = props;
   const { error, touched } = meta;
   const hasError = error && touched;
-  const control = controls[src];
-
-  if (!control) {
-    throw new Error(`src ${src} not found!`);
-  }
 
   return (
     <div
@@ -34,13 +27,13 @@ function Field(props) {
       })}
     >
       {label && (
-        <label className="form-field__label" htmlFor={id || name}>
+        <label className="form-field__label" htmlFor={id || input.name}>
           {label}
         </label>
       )}
       <div className="form-field__control-container">
         {hasError && <FieldError error={error} errorPosition={errorPosition} />}
-        {React.createElement(control, Object.assign({}, rest, input))}
+        <Control {...rest} {...input} />
         {help && <div className="form-field__control-help">{help}</div>}
       </div>
     </div>
@@ -49,7 +42,6 @@ function Field(props) {
 
 Field.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  src: PropTypes.string,
   label: PropTypes.string,
   help: PropTypes.string,
   className: PropTypes.string,

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchData } from '../../actions/fetch';
 
@@ -10,24 +10,21 @@ const useFetch = (url, mappingOptions = {}, mapper) => {
     setData(typeof mapper === 'function' ? mapper(data) : data);
   };
 
-  const onFetch = useCallback(
-    (url, mappingOptions) => {
-      dispatch(
-        fetchData({
-          url,
-          mappingOptions,
-          onSuccess,
-        })
-      );
-    },
-    [dispatch]
-  );
+  const onFetch = (url, mappingOptions) => {
+    dispatch(
+      fetchData({
+        url,
+        mappingOptions,
+        onSuccess,
+      })
+    );
+  };
 
   useEffect(() => {
     if (url) {
       onFetch(url, mappingOptions);
     }
-  }, [onFetch]);
+  }, []);
 
   return {
     data,

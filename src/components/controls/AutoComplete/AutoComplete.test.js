@@ -1,5 +1,10 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import AutoComplete from './AutoComplete';
+
+import configureStore from '../../../store';
+
+const store = configureStore();
 
 const setup = (propsOverride) => {
   const props = {
@@ -17,7 +22,11 @@ const setup = (propsOverride) => {
   };
 
   // eslint-disable-next-line no-undef
-  return mount(<AutoComplete {...props} {...propsOverride} />);
+  return mount(
+    <Provider store={store}>
+      <AutoComplete {...props} {...propsOverride} />
+    </Provider>
+  );
 };
 
 describe('<AutoComplete />', () => {

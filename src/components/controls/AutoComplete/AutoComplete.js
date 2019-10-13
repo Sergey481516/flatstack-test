@@ -44,6 +44,7 @@ function AutoComplete({
         )}
         renderItem={(item, isHighlighted) => (
           <div
+            key={item[labelFieldId]}
             className={cn('autocomplete__item', {
               'autocomplete__item--active': isHighlighted,
             })}
