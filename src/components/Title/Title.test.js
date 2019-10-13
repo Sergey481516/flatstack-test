@@ -6,6 +6,7 @@ const setup = (propsOverride = {}) => {
     children: 'title',
   };
 
+  // eslint-disable-next-line no-undef
   return mount(<Title {...props} {...propsOverride} />);
 };
 
